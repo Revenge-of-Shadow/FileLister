@@ -17,7 +17,9 @@ int listdir(const char *path_to_dir, const char* path_to_log){
   while ((entry = readdir(dp))) {
     if(entry->d_type != DT_DIR)
     {
-      if(!strcmp((entry->d_name)+strlen(entry->d_name)-4, ".mp4"))
+      if(!strcmp((entry->d_name)+strlen(entry->d_name)-4, ".mp4")
+        ||!strcmp((entry->d_name)+strlen(entry->d_name)-4, ".MP4")
+      )
       {
           FILE *f = fopen(entry->d_name, "r");
           fseek(f, 0, SEEK_END);
